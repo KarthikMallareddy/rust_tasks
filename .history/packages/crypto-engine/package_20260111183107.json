@@ -1,0 +1,9 @@
+{
+  "name": "@password-manager/crypto-engine",
+  "version": "1.0.0",
+  "type": "module", 
+  "main": "src/kdf.js",
+  "dependencies": {
+    "hash-wasm": "^4.12.0"
+  }
+}

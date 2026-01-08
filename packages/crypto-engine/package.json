@@ -11,20 +11,31 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
-    "test": "node --loader tsx ./test/example.test.ts",
+    "test": "npm run build && node --test dist/test/argon2.test.js dist/test/aes.test.js dist/test/vault.test.js",
+    "test:all": "npm run build && npm run test",
     "clean": "rm -rf dist"
   },
-  "keywords": ["cryptography", "password-manager", "zero-knowledge", "aes-256-gcm", "argon2id", "encryption"],
+  "keywords": [
+    "cryptography",
+    "password-manager",
+    "zero-knowledge",
+    "aes-256-gcm",
+    "argon2id",
+    "encryption"
+  ],
   "dependencies": {
-    "@noble/hashes": "^1.4.0"
+    "@noble/hashes": "^1.4.0",
+    "nodemailer": "^7.0.13"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0",
-    "tsx": "^4.0.0"
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

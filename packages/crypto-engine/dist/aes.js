@@ -36,7 +36,7 @@ export async function encrypt(entry, derivedKey) {
     const ciphertext = await crypto.subtle.encrypt({
         name: ALGORITHM,
         iv,
-    }, derivedKey.key, plaintextBytes);
+    }, derivedKey.encryptionKey, plaintextBytes);
     // Return serializable encrypted vault object
     return {
         ciphertext: bufferToBase64(new Uint8Array(ciphertext)),
@@ -66,7 +66,7 @@ export async function decrypt(encrypted, derivedKey) {
         const plaintext = await crypto.subtle.decrypt({
             name: ALGORITHM,
             iv: iv,
-        }, derivedKey.key, ciphertext);
+        }, derivedKey.encryptionKey, ciphertext);
         // Parse the decrypted JSON
         const plaintextString = new TextDecoder().decode(plaintext);
         const entry = JSON.parse(plaintextString);
